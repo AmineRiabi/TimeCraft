@@ -1,0 +1,207 @@
+@font-face {
+    font-family: digital-7  mono;
+    src: url(font/digital-7\ \ mono.ttf);
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background-color: #10101E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 30px;
+}
+.clock-content{
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    width: 520px;
+    height: 300px;
+}
+.digital-clock-content{
+    height: inherit;
+    width: inherit;
+    position: absolute;
+    backface-visibility: hidden;
+}
+.digital-clock{
+    width: inherit;
+    padding: 40px;
+    background-color: #2d2f41;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    box-shadow: 0 0 50px black;
+    position: relative;
+}
+.digital-clock > .ellipsis-btn{
+    position: absolute;
+    font-size: 1.7em;
+    color: #ffffff;
+    right: -5px;
+    top: 10px;
+    writing-mode: vertical-lr;
+    cursor: pointer;
+}
+.digital-clock > .check-menu{
+    list-style: none;
+    position: absolute;
+    right: 34px;
+    top: 5px;
+    background-color: #353e54;
+    padding: 5px 20px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+}
+.digital-clock > .check-menu.active{
+    visibility: visible;
+}
+.digital-clock > .check-menu > .menu-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+}
+.digital-clock > .check-menu > .menu-item > .clock-format-text{
+    font-size: 0.9em;
+    color: #efefef;
+}
+.digital-clock > .check-menu > .menu-item > .format-switch-btn{
+    width: 35px;
+    height: 15px;
+    background-color: #485470;
+    border-radius: 75px;
+    -webkit-border-radius: 75px;
+    -moz-border-radius: 75px;
+    -ms-border-radius: 75px;
+    -o-border-radius: 75px;
+    box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.digital-clock > .check-menu > .menu-item > .format-switch-btn::before{
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: #ff3333;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    box-shadow: 0 5px 25px #ff3333;
+    transform: translateX(-10px);
+    -webkit-transform: translateX(-10px);
+    -moz-transform: translateX(-10px);
+    -ms-transform: translateX(-10px);
+    -o-transform: translateX(-10px);
+    transition: background-color,transform 0.3s ease;
+    -webkit-transition: background-color,transform 0.3s ease;
+    -moz-transition: background-color,transform 0.3s ease;
+    -ms-transition: background-color,transform 0.3s ease;
+    -o-transition: background-color,transform 0.3s ease;
+}
+.digital-clock > .check-menu > .menu-item > .format-switch-btn.active::before{
+    background-color: #00ff00;
+    box-shadow: 0 5px 25px #00ff00;
+    transform: translateX(10px);
+    -webkit-transform: translateX(10px);
+    -moz-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    -o-transform: translateX(10px);
+}
+.digital-clock > .digital-clock-container{
+    width: 100%;
+    padding: 15px 10px;
+    border: 2px solid #2E94E3;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    color: #ffffff;
+    transition: background-color,box-shadow 0.5s;
+    -webkit-transition: background-color,box-shadow 0.5s;
+    -moz-transition: background-color,box-shadow 0.5s;
+    -ms-transition: background-color,box-shadow 0.5s;
+    -o-transition: background-color,box-shadow 0.5s;
+    cursor: pointer;
+    background-color: #10101E;
+    box-shadow: 1px 1px 20px #2E94E3 inset;
+}
+.digital-clock > .digital-clock-container:hover{
+    background-color: #2E94E3;
+    box-shadow: 0 0 30px #2E94E3;
+}
+.digital-clock > .digital-clock-container > .weekdays{
+    display: flex;
+    justify-content: space-evenly;
+    text-transform: uppercase;
+}
+.digital-clock > .digital-clock-container > .weekdays > .day{
+    opacity: 0.2;
+}
+.digital-clock > .digital-clock-container > .weekdays > .day.active{
+    opacity: 1;
+}
+.digital-clock > .digital-clock-container > .time{
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 6px;
+    font-family: 'Digital-7 Mono',sans-serif;
+}
+.digital-clock > .digital-clock-container > .time > .dots-double{
+    animation: blinker 0.7s linear infinite;
+    -webkit-animation: blinker 0.7s linear infinite;
+}
+@keyframes blinker{
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.digital-clock > .digital-clock-container > .time > span:not(:last-child){
+    letter-spacing: 3px;
+    font-size: 60px;
+}
+.digital-clock > .digital-clock-container > .time > span:last-child{
+    font-size: 20px;
+    background-color: #2E94E3;
+    text-transform: uppercase;
+    padding: 0 5px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    margin-top: 10px;
+    font-family: "Segoe UI", sans-serif;
+}
+.digital-clock > .digital-clock-container > .date{
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 3px;
+}   
+  
+  
