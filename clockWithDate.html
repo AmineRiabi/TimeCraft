@@ -8,11 +8,11 @@
      Enjoy seeing time in a modern and stylish way with the precise digital clock, 
      and relish the charm of traditional design with the beautiful analog clock. 
      Make the experience of timekeeping more exciting and stylish on this innovative website.">
-    <title>Time Craft</title>
+    <title>Clock</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section class="clock-content">
+    <section class="clock-content" data-rotate ="digital">
         <section class="digital-clock-content">
             <section class="digital-clock">
                 <i class="ellipsis-btn">...</i>
@@ -49,6 +49,21 @@
                 </section>
             </section>
         </section>
+        <section class="analog-clock">
+            <div class="analog-clock-container">
+                <img src="img/img-clock.png" alt="clock">
+                <div class="hour-container">
+                    <div class="hour"></div>
+                </div>
+                <div class="minute-container">
+                    <div class="minute"></div>
+                </div>
+                <div class="second-container">
+                    <div class="second"></div>
+                </div>
+            </div>
+        </section>
     </section>
+    <button class="custom-btn btn-clock">analog clock</button>
 </body>
 </html>
